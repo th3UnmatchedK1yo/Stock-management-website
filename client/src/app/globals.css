@@ -1,0 +1,60 @@
+@import "tailwindcss"; /* Import Tailwind CSS */
+
+/* Root color definitions */
+:root {
+  --background: #6b7280; /* bg-gray-500 */
+  --foreground: #111827; /* text-gray-900 */
+  --font-sans: Arial, Helvetica, sans-serif;
+  --font-mono: Courier, monospace;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+}
+
+/* Dark mode media query */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a; /* Dark background */
+    --foreground: #ededed; /* Light text */
+  }
+}
+
+/* Global styles for body */
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  font-size: 0.875rem; /* Equivalent to text-sm in Tailwind */
+  margin: 0;
+  padding: 0;
+}
+
+/* Ensure proper box-sizing */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Grid system for custom rows */
+@media (min-width: 768px) {
+  .custom-grid-rows {
+    display: grid;
+    grid-template-rows: repeat(8, 20vh); /* Grid with 8 rows each 20vh on medium screens */
+  }
+}
+
+@media (min-width: 1280px) {
+  .custom-grid-rows {
+    grid-template-rows: repeat(8, 7.5vh); /* Grid with 8 rows each 7.5vh on large screens */
+  }
+}
+
+/* Optional: Adding utility classes for consistency */
+.custom-grid-rows {
+  display: grid;
+}
