@@ -13,6 +13,7 @@ import {
   SlidersHorizontal,
   User,
 } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
@@ -79,7 +80,13 @@ const Sidebar = () => {
           isSidebarCollapsed ? "px-5" : "px-8"
         }`}
       >
-        <div>logo</div>
+        <Image
+          src="/assets/n-logo.png"
+          alt="Roomique-logo"
+          width={27}
+          height={27}
+          className="rounded w-8"
+        />
         <h1
           className={`${
             isSidebarCollapsed ? "hidden" : "block"
@@ -142,7 +149,9 @@ const Sidebar = () => {
       </div>
       {/*FOOTER*/}
       <div className={`${isSidebarCollapsed ? "hidden" : "block"} mb-10`}>
-        <p className="text-center text-xs text-gray-500">&copy; 2025 Tianzistock</p>
+        <p className="text-center text-xs text-gray-500">
+          &copy; 2025 Tianzistock
+        </p>
       </div>
     </div>
   );

@@ -3,6 +3,7 @@
 import { useAppDispatch, useAppSelector } from "@/app/redux";
 import { setIsDarkMode, setIsSidebarCollapse } from "@/state";
 import { Bell, Menu, Moon, Settings, Sun } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
@@ -64,8 +65,15 @@ const Navbar = () => {
           </div>
           <hr className="w-0 h-7 border border-solid border-l border-gray-300 mx-3" />
           <div className="flex items-center gap-3 cursor-pointer">
-            <div className="w-9 h-9">image</div>
-            <span className="font-semibold">Tianzii2k4</span>
+            <Image
+              src="/assets/profile.jpg"
+              alt="profile"
+              width={50}
+              height={50}
+              className="rounded-full object-cover"
+            />
+
+            <span className="font-semibold">nigger</span>
           </div>
         </div>
         <Link href="/setting">
