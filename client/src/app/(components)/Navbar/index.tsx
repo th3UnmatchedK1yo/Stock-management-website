@@ -73,7 +73,7 @@ const Navbar = () => {
               className="rounded-full object-cover"
             />
 
-            <span className="font-semibold">nigger</span>
+            <span className="font-semibold">Speed</span>
           </div>
         </div>
         <Link href="/setting">

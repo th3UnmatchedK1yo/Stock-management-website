@@ -92,7 +92,7 @@ const Sidebar = () => {
             isSidebarCollapsed ? "hidden" : "block"
           } font-extrabold text-2xl`}
         >
-          TIANZISTOCK
+          ROOMIQUE
         </h1>
 
         <button
@@ -150,7 +150,7 @@ const Sidebar = () => {
       {/*FOOTER*/}
       <div className={`${isSidebarCollapsed ? "hidden" : "block"} mb-10`}>
         <p className="text-center text-xs text-gray-500">
-          &copy; 2025 Tianzistock
+          &copy; 2025 Roomique
         </p>
       </div>
     </div>
