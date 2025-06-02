@@ -7,6 +7,7 @@ import Header from "@/app/(components)/Header";
 import Rating from "@/app/(components)/Rating";
 import CreateProductModal from "./CreateProductModal";
 import Image from "next/image";
+import { PencilIcon } from "lucide-react";
 
 const Products = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -67,6 +68,7 @@ const Products = () => {
           <PlusCircleIcon className="w-5 h-5 mr-2 !text-gray-200" /> Create
           Product
         </button>
+        
       </div>
 
       {/* BODY PRODUCTS LIST */}
