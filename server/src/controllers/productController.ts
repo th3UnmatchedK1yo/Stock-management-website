@@ -57,3 +57,20 @@ export const deleteProduct = async (req: Request, res: Response): Promise<void> 
   }
 };
 
+export const updateProduct = async (req: Request, res: Response): Promise<void> => {
+  try {
+    const { id } = req.params;
+    const { name, price, stockQuantity, rating } = req.body;
+
+    const updated = await prisma.products.update({
+      where: { productId: id },
+      data: { name, price, stockQuantity, rating },
+    });
+
+    res.status(200).json(updated);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Error updating product" });
+  }
+};
+

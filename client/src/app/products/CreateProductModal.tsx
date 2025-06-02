@@ -1,6 +1,7 @@
-import React, { ChangeEvent, FormEvent, useState } from "react";
+import React, { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import { v4 } from "uuid";
 import Header from "@/app/(components)/Header";
+import { Product } from "@/state/api";
 
 type ProductFormData = {
   name: string;
@@ -13,20 +14,41 @@ type CreateProductModalProps = {
   isOpen: boolean;
   onClose: () => void;
   onCreate: (formData: ProductFormData) => void;
+  mode: "create" | "edit";
+  initialData?: Product | null;
 };
 
 const CreateProductModal = ({
   isOpen,
   onClose,
   onCreate,
+  mode,
+  initialData,
 }: CreateProductModalProps) => {
-  const [formData, setFormData] = useState({
-    productId: v4(),
+  const [formData, setFormData] = useState<ProductFormData>({
     name: "",
     price: 0,
     stockQuantity: 0,
     rating: 0,
   });
+
+  useEffect(() => {
+    if (mode === "edit" && initialData) {
+      setFormData({
+        name: initialData.name,
+        price: initialData.price,
+        stockQuantity: initialData.stockQuantity,
+        rating: initialData.rating || 0,
+      });
+    } else {
+      setFormData({
+        name: "",
+        price: 0,
+        stockQuantity: 0,
+        rating: 0,
+      });
+    }
+  }, [initialData, mode, isOpen]);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -54,7 +76,7 @@ const CreateProductModal = ({
   return (
     <div className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-20">
       <div className="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white">
-        <Header name="Create New Product" />
+        <Header name={mode === "edit" ? "Edit Product" : "Create New Product"} />
         <form onSubmit={handleSubmit} className="mt-5">
           {/* PRODUCT NAME */}
           <label htmlFor="productName" className={labelCssStyles}>
@@ -112,12 +134,12 @@ const CreateProductModal = ({
             required
           />
 
-          {/* CREATE ACTIONS */}
+          {/* ACTION BUTTONS */}
           <button
             type="submit"
             className="mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700"
           >
-            Create
+            {mode === "edit" ? "Save Changes" : "Create"}
           </button>
           <button
             onClick={onClose}
